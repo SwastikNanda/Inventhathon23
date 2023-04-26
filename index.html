@@ -9,8 +9,21 @@
 </head>
 <body> 
   <div class="app-wrap">
-    <header>
-      <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." />
+ <!-- for language translation -->
+    <div id="google_translate_element" style="text-align: right;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+        
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- end of language translation-->
+        <header>
+            <input type="text" autocomplete="off" class="crop" placeholder="Enter crop name" style="margin-right: 2vw;"/>
+            <input type="text" autocomplete="off" class="season" placeholder="Enter Crop Type">
+            <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." style="margin-left: 2vw;"/>
     </header>
     <main>
       <section class="location">
@@ -27,10 +40,11 @@
         <div class="windspeed"></div>
         <div class="sunlight"></div>
       </div>
+      <div class="details">
+        
+      </div>
     </main>
 
-    <div class="crop">Crop drop-down</div>
-    <div class="details"></div>
 
   </div>
   <script src="script.js"></script>
