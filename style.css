@@ -6,9 +6,11 @@
   
   body {
     font-family: 'montserrat', sans-serif;
+    background: fixed;
     background-image: url('bg.jpg');
-    background-size: cover;
+    
     background-position: top center;
+   
   }
   
   .app-wrap {
@@ -138,9 +140,27 @@
     /* text-shadow: 0px 4px rgba(0, 0, 0, 0.4); */
     padding: 1vw;
     padding-left: 5px;
-    border: solid 2px #FFF;
+    /* border: solid 2px #FFF; */
     /* background: #FFF; */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border: solid 0.5px #FFF;
+    /* border: solid 0.5px #FFF; */
+}
+.contact{
+  color: #FFF;
+}
+.list{
+  font-size: 18px;
+  text-align: justify;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.added_details{
+  margin: 20px;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 2rem;
+}
+.added_h4{
+  font-weight: 100;
+  color: #e8bb82;
 }

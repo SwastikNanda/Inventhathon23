@@ -109,50 +109,91 @@ const api = {
 // HUMIDITY=> IN %
 
 let det=document.querySelector('.details');
- 
+det.innerHTML="<h3 class='added_details'>Details</h3>";
 
 // RABI CROPS DATA
-if (season == "Rabi"|| season=="rabi" || season=="RABI") 
+if (season == "Rabi" || season=="rabi" || season=="RABI") 
 {
-    if (sn[0] < 6 && sn[0] > 8) {
-        print("SNG");
+    count=0;
+    if (sn[0] < 6) {
+        count+=1;
+        det.innerHTML+=
+        "<h4 class='added_h4'>=>Less Sunlight Hours than  required available for crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+        "<ul class='list'>"+
+        "<li>Select crop varieties that are better adapted to low-light conditions</li>"+
+        "<li>Use reflective mulch to increase the amount of available light.</li>"+
+        "<li>Use artificial light sources, such as grow lights, to supplement natural light.</li>"+
+        "</ul>" +"<br /> "
+        
+    }
+    if(sn[0]>11){
+        count+=1;
+        det.innerHTML+=
+        `<h4 class='added_h4'>${count}. More Sunlight Hours than required being provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4> <br /> `+
+        "<ul class='list'>"+
+        "<li>Consider using sunscreen sprays or other protective measures to reduce sunburn damage .</li>"+
+        "<li>Use shade cloth or other shading devices to reduce the amount of direct sunlight on the crop.</li>"+
+        "<li>Water the crop more frequently to prevent water stress and wilting.</li>"+
+        "</ul>" +"<br /> "
+        
     }
     //SUNLIGHT HOURS SAME FOR ALL
 
-    if (crop == "Wheat") 
+    if (crop == "Wheat" || crop=="wheat" || crop=="WHEAT") 
     {
-        count = 0;
+       
             if(temperature[0] < 10 ){
-            det.innerHTML=
-            "<h2>Details</h2>"+
-            "<h4>Less Temperature provided to crops.</h4> <h4>Solutions-</h4>"+" <br /> "+
-            "<ul>"+
+            count += 1;
+            det.innerHTML+=
+            "<h4 class='added_h4'>Less Temperature provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+            "<ul class='list'>"+
             "<li>Plant the crop earlier in the season to take advantage of cooler temperatures.</li>"+
             "<li>Use crop varieties that are adapted to cooler temperatures.</li>"+
-            "<li>Use drip irrigation or other water-saving techniques to ensure the crop receives adequate moisture.</li>"+
-            "</ul>";
-            count += 1;
+            "<li>Use drip irrigation or other water-saving techniques to ensure  adequate moisture.</li>"+
+            "</ul>"+"<br /> "
+           
             }
-            else if(temperature[0] > 25){
-
+     else if(temperature[0] > 25){
+                count += 1;
+                det.innerHTML+=
+                `<h4 class='added_h4'>${count}. More Temperature than required being provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4> <br /> `+
+                "<ul class='list'>"+
+                "<li>Plant the crop later in the season to avoid the hottest periods.</li>"+
+                "<li>Use shade cloth or other shading devices to reduce the amount of direct sunlight on the crop.</li>"+
+                "<li>Increase the frequency of irrigation to prevent water stress and wilting.</li>"+
+                "</ul>" +"<br /> "
             }
 
-        else if (humidity[0] < 40) {
-            print("HNG");
+    if (humidity[0] < 40) {
+      count+=1;
+        det.innerHTML+=
+        `<h4 class='added_h4'>${count}. Less Humidity than required being provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4> <br /> `+
+        "<ul class='list'>"+
+        "<li>Water the crop more frequently to compensate for the reduced amount of moisture in the air</li>"+
+        "<li>Apply foliar spray to help reduce water loss from plant leaves.</li>"+
+        "<li>Use fans or other ventilation devices to improve air circulation and reduce the risk of fungal diseases.</li>"+
+        "</ul>" +"<br /> "
+        }
+    else if(humidity[0] > 50){
             count += 1;
+            det.innerHTML+=
+            "<h4 class='added_h4'>=>More Humidity than required provided to crops..</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+            "<ul class='list'>"+
+            "<li>Ensure adequate drainage to prevent waterlogging and root rot.</li>"+
+            "<li>Consider using fungicides or other inputs to prevent or control fungal diseases .</li>"+
+            "<li>Use open-field production or other techniques that promote good air circulation to humidity levels.</li>"+
+            "</ul>" +"<br /> "
         }
-        else if(humidity[0] > 50){
-
-        }
-        else{
+    if (count==0){
+            console.log("No problem");
             det.innerHTML="<h3>Details-</h3><br><p>No Issues detected related to Temperature or Humidity</p>";
         }
     } 
 
 
-    else if (crop == "Mustard") 
+    else if (crop == "Mustard"||  crop=="mustard" || crop=="MUSTARD") 
     {
-        count = 0;
+       
         if (temperature[0] < 10 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -168,9 +209,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Barley") 
+    else if (crop == "Barley" ||  crop=="barley" || crop=="BARLEY") 
     {
-        count = 0;
+       
         if (temperature[0] < 10 && temperature[0] > 20) {
             print("TNG");
             count += 1;
@@ -186,9 +227,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Chickpea") 
+    else if (crop == "Chickpea" ||  crop=="chickpea" || crop=="CHICKPEA") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -204,9 +245,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Lentil") 
+    else if (crop == "Lentil" ||  crop=="lentil" || crop=="LENTIL") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -222,9 +263,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Potatoes") 
+    else if (crop == "Potatoes" ||  crop=="potatoes" || crop=="POTATOES") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 20) {
             print("TNG");
             count += 1;
@@ -240,9 +281,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Tomatoes") 
+    else if (crop == "Tomatoes" ||  crop=="tomatoes" || crop=="TOMATOES") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 30) {
             print("TNG");
             count += 1;
@@ -258,9 +299,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Peas") 
+    else if (crop == "Peas" ||  crop=="peas" || crop=="PEAS") 
     {
-        count = 0;
+       
         if (temperature[0] < 10 && temperature[0] > 20) {
             print("TNG");
             count += 1;
@@ -276,9 +317,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Cumin") 
+    else if (crop == "Cumin"||  crop=="cumin" || crop=="CUMIN") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -294,9 +335,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Coriander") 
+    else if (crop == "Coriander" ||  crop=="coriander" || crop=="CORIANDER") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -312,9 +353,9 @@ if (season == "Rabi"|| season=="rabi" || season=="RABI")
     }
 
 
-    else if (crop == "Fenugreek") 
+    else if (crop == "Fenugreek" ||  crop=="fenugreek" || crop=="FENUGREEK") 
     {
-        count = 0;
+       
         if (temperature[0] < 15 && temperature[0] > 25) {
             print("TNG");
             count += 1;
@@ -348,9 +389,9 @@ else if(season=="Kharif")
     {
         print("SNG");
     }
-    if (crop == "Rice") 
+    if (crop == "Rice" ||  crop=="rice" || crop=="RICE") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 37) {
             print("TNG");
             count += 1;
@@ -365,9 +406,9 @@ else if(season=="Kharif")
         }
     }
 
-    else if (crop == "Cotton") 
+    else if (crop == "Cotton"||  crop=="cotton" || crop=="COTTON") 
     {
-        count = 0;
+       
         if (temperature[0] < 21 && temperature[0] > 30) {
             print("TNG");
             count += 1;
@@ -383,9 +424,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Sugarcane") 
+    else if (crop == "Sugarcane" ||  crop=="sugarcane" || crop=="SUGARCANE") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 35) {
             print("TNG");
             count += 1;
@@ -401,9 +442,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Turmeric") 
+    else if (crop == "Turmeric" ||  crop=="turmeric" || crop=="TURMERIC") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 30) {
             print("TNG");
             count += 1;
@@ -419,9 +460,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Maize") 
+    else if (crop == "Maize"||  crop=="maize" || crop=="MAIZE") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 32) {
             print("TNG");
             count += 1;
@@ -437,9 +478,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Moong Dal") 
+    else if (crop == "Moong Dal"||  crop=="MOONG DAL" || crop=="moong dal") 
     {
-        count = 0;
+       
         if (temperature[0] < 25 && temperature[0] > 35) {
             print("TNG");
             count += 1;
@@ -455,9 +496,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "GroundNut") 
+    else if (crop == "Groundnut"||  crop=="GROUNDNUT" || crop=="groundnut" ||"GroundNut") 
     {
-        count = 0;
+       
         if (temperature[0] < 25 && temperature[0] > 35) {
             print("TNG");
             count += 1;
@@ -473,9 +514,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Bajra") 
+    else if (crop == "Bajra"||  crop=="BAJRA" || crop=="bajra") 
     {
-        count = 0;
+       
         if (temperature[0] < 25 && temperature[0] > 35) {
             print("TNG");
             count += 1;
@@ -491,9 +532,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Jowar") 
+    else if (crop == "Jowar"||  crop=="jowar" || crop=="JOWAR") 
     {
-        count = 0;
+       
         if (temperature[0] < 25 && temperature[0] > 35) {
             print("TNG");
             count += 1;
@@ -509,9 +550,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "Pumpkin") 
+    else if (crop == "Pumpkin"||  crop=="PUMPKIN" || crop=="pumpkin") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 30) {
             print("TNG");
             count += 1;
@@ -527,9 +568,9 @@ else if(season=="Kharif")
     }
 
 
-    else if (crop == "WaterMelon") 
+    else if (crop == "WaterMelon"||  crop=="WATERMELON" || crop=="watermelon") 
     {
-        count = 0;
+       
         if (temperature[0] < 20 && temperature[0] > 30) {
             print("TNG");
             count += 1;
@@ -576,8 +617,48 @@ else
     }
 //SARA DATA SAME HAI SARI CROPS KE LIYE ZAID ME
       
+
 }
-
-  }
-
-
+ }
+ det.innerHTML+=
+ "<h4 class='added_h4'>Less Temperature than required being provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Plant the crop earlier in the season to take advantage of cooler temperatures.</li>"+
+ "<li>Use crop varieties that are adapted to cooler temperatures.</li>"+
+ "<li>Use drip irrigation or other water-saving techniques to ensure the crop receives adequate moisture.</li>"+
+ "</ul>" +"<br /> "
+ det.innerHTML+=
+ "<h4 class='added_h4'>More Temperature than required being provided to crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Plant the crop later in the season to avoid the hottest periods.</li>"+
+ "<li>Use shade cloth or other shading devices to reduce the amount of direct sunlight on the crop.</li>"+
+ "<li>Increase the frequency of irrigation to prevent water stress and wilting.</li>"+
+ "</ul>" +"<br /> "
+ det.innerHTML+=
+ "<h4 class='added_h4'>Less Sunlight Hours than  required available for crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Select crop varieties that are better adapted to low-light conditions</li>"+
+ "<li>Use reflective mulch to increase the amount of available light.</li>"+
+ "<li>Use artificial light sources, such as grow lights, to supplement natural light.</li>"+
+ "</ul>" +"<br /> "
+ det.innerHTML+=
+ "<h4 class='added_h4'>More Sunlight Hours than required for crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Consider using sunscreen sprays or other protective measures to reduce sunburn damage on fruits or vegetables that are exposed to direct sunlight.</li>"+
+ "<li>Use shade cloth or other shading devices to reduce the amount of direct sunlight on the crop.</li>"+
+ "<li>Water the crop more frequently to prevent water stress and wilting.</li>"+
+ "</ul>" +"<br /> "
+ det.innerHTML+=
+ "<h4 class='added_h4'>More Humidity than required provided to crops..</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Ensure adequate drainage to prevent waterlogging and root rot.</li>"+
+ "<li>Consider using fungicides or other inputs to prevent or control fungal diseases that thrive in humid conditions.</li>"+
+ "<li>Use open-field production or other techniques that promote good air circulation and reduce humidity levels.</li>"+
+ "</ul>" +"<br /> "
+ det.innerHTML+=
+ "<h4 class='added_h4'>Less Humidity than required available for crops.</h4> <h4 class='added_h4'>Solutions-</h4>"+" <br /> "+
+ "<ul class='list'>"+
+ "<li>Water the crop more frequently to compensate for the reduced amount of moisture in the air</li>"+
+ "<li>Apply foliar spray to help reduce water loss from plant leaves.</li>"+
+ "<li>Use fans or other ventilation devices to improve air circulation and reduce the risk of fungal diseases.</li>"+
+ "</ul>" +"<br /> "
